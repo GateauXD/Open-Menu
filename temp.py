@@ -1,6 +1,10 @@
-import matplotlib.pyplot as plt
+import cv2
 import numpy as np
+import os
 
-data = [78, 81, 60, 37, 36, 69, 61, 71, 56, 50, 81, 53, 48, 61, 67, 42, 100, 88, 95, 80, 85, 80, 89, 92, 88, 90, 98, 90, 99, 88, 94, 94, 92, 97, 100, 98, 99, 98, 99, 102, 107, 103, 93, 106, 102, 93, 100, 96, 101, 106, 104, 104, 102, 100, 107, 106, 109, 109, 103, 110, 103, 104, 104, 93, 99, 97, 100, 103, 110, 100, 102, 105, 92, 85, 118, 97, 92, 89, 92, 84, 106, 97, 89, 93, 98, 100, 84, 85, 82, 77, 74, 68, 75, 70, 78, 71, 63, 56, 52, 62]
+img = cv2.imread('Images/grayscale.jpg')
+median = cv2.medianBlur(img, 3)
 
-print(data.index(118))
+compare = np.concatenate((img, median), axis=1)
+
+cv2.imwrite('test.jpg', compare)

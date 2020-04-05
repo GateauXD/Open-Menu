@@ -1,6 +1,7 @@
 import os
 import pytesseract
 import enchant
+import cv2
 from PIL import Image
 
 english_dict = enchant.Dict("en_US")
@@ -41,7 +42,7 @@ image.save(save_path)
 
 # Convert the image to txt
 custom_oem_psm_config = r'--oem 3 --psm 6'
-text = pytesseract.image_to_string(Image.open(save_path), config=custom_oem_psm_config).split(" ")
+text = pytesseract.image_to_string(Image.open(save_path), config=custom_oem_psm_config)
 
 # Save Output
 text_file = open("Output.txt", "w")
